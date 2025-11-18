@@ -1,0 +1,39 @@
+[tool.black]
+# Black's maximum line length
+line-length = 100 
+
+# By default, Black only includes .py files. 
+# Adding regex to find ipynb files.
+include = '\.pyi?|\.ipynb$'
+
+# You can also exclude files or directories here.
+exclude = '''
+/(
+    \.git
+  | \.vscode
+  | \.gitignore
+  | \.mypy_cache
+  | Data(/|$) # Excludes 'Data' directory for efficiency
+  | configs(/|$) # Excludes 'configs' directory for efficiency
+  | Setup(/|$) # Excludes 'setup' directory for efficiency
+  | README\.md$ # Excludes a file named README.md at the root
+)/
+'''
+
+[tool.nbqa]
+# nbqa will automatically apply Black to code cells.
+# You can use this section to configure *nbqa* specifically.
+# For example, to skip checking certain files for nbqa.
+exclude = '''
+/(
+    \.git
+  | \.vscode
+  | \.gitignore
+  | \.mypy_cache
+  | Data(/|$) # Excludes 'Data' directory for efficiency
+  | configs(/|$) # Excludes 'configs' directory for efficiency
+  | Setup(/|$) # Excludes 'setup' directory for efficiency
+  | HuggingFace_Space(/|$) # Excludes the 'HuggingFace_Space' directory for efficiency
+  | README\.md$ # Excludes a file named README.md at the root
+)/
+'''
