@@ -4,7 +4,7 @@
 # Select "install ikernel" when popup appears when first activating running a cell in an .ipynb file with the env
 # Use: "conda activate *Name of Env (ex. my_env)*" when running scripts in the terminal to activate the environment
 
-name: FILL IN VIRTUAL ENVIRONMENT NAME HERE (ex. my_env)*
+name: type2_env
 channels:
   - pytorch
   - nvidia
