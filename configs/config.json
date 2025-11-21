@@ -1,12 +1,12 @@
 {
   "data": {
-    "dataset_url": "PASTE URL HERE",
+    "dataset_url": "hf://datasets/MaxPrestige/Synthetic-Diabetes-Dataset/Data/Synthetic-Diabetes-Dataset.csv",
     "root_data_dir": "./Data",
-    "data_file_path": "ENTER DATA FILE NAME HERE (ex. 'liquid_gold_data.csv')",
+    "data_file_path": "Synthetic-Diabetes-Dataset.csv",
     "data_splits_dir": "DataSplits",
     "scaler_dir": "Scalers",
-    "target_column": "ENTER TARGET COLUMN NAME HERE (ex. 'Price')",
-    "extra_dropped_columns": ["ADD ANY EXTRA COLUMNS THAT NEED TO BE DROPPED HERE"]
+    "target_column": "diagnosed_diabetes",
+    "extra_dropped_columns": []
   }
   ,
   "parser_defaults": {
@@ -21,12 +21,12 @@
     "use_cuda": false,
     "device": "cpu",
     "save_model": false,
-    "model_output_path": "ENTER MODEL OUTPUT PATH HERE (ex. './Models/liquid_gold_model.pt')"
+    "model_output_path": "trained_model.pt"
   },
   "model": {
-    "in_dim": "CHANGE TO NUMBER OF INPUT FEATURES (ex. 5)",
+    "in_dim": 33,
     "intermediate_dim": 128,
-    "out_dim": "CHANGE TO NUMBER OF OUTPUT FEATURES (ex. 2)",
+    "out_dim": 2,
     "num_blocks": 12,
     "dropout_rate": 0.1
   },
@@ -42,7 +42,7 @@
   },
   "training": {
     "optimizer": "adamw",
-    "loss_function": "mae",
+    "loss_function": "CrossEntropyLoss",
     "early_stopping": false,
     "early_stopping_patience": 10,
     "checkpoint_dir": "./checkpoints"
@@ -54,7 +54,7 @@
     "--eval_iterations": "64",
     "--dataloader_pin_memory": false,
     "--use_cuda": false,
-    "--save_model": false,
-    "--model_output_path": "ENTER MODEL OUTPUT PATH HERE (ex. './Models/liquid_gold_model.pt')"
+    "--save_model": true,
+    "--model_output_path": "../models/sample_model.pt"
   }
 }
