@@ -10,7 +10,7 @@ Covers the essential data configurations for the Data Pipeline
 
 - `dataset_url`  
   - **Type**: `str`  
-  - **Default**: `PASTE URL HERE  (ex. 'hf://datasets/MaxPrestige/fake-dataset.csv')`  
+  - **Default**: `"hf://datasets/MaxPrestige/Synthetic-Diabetes-Dataset/Data/Synthetic-Diabetes-Dataset.csv"`  
   - **Description**: URL to the dataset hosted on Hugging Face.
 
 - `root_data_dir`  
@@ -20,7 +20,7 @@ Covers the essential data configurations for the Data Pipeline
 
 - `data_file_path`  
   - **Type**: `str`  
-  - **Default**: `ENTER DATA FILE NAME HERE (ex. "liquid_gold_data.csv")`  
+  - **Default**: `"Synthetic-Diabetes-Dataset.csv"`  
   - **Description**: Filename of the dataset.
 
 - `data_splits_dir`  
@@ -35,12 +35,12 @@ Covers the essential data configurations for the Data Pipeline
 
 - `target_column`  
   - **Type**: `str`  
-  - **Default**: `ENTER TARGET COLUMN NAME HERE (ex. "Price")`  
+  - **Default**: `"diagnosed_diabetes"`  
   - **Description**: Column name to be predicted.
 
 - `extra_dropped_columns`  
   - **Type**: `list`  
-  - **Default**: `["ADD ANY EXTRA COLUMNS THAT NEED TO BE DROPPED HERE"]  -OR- KEEP EMPTY & REMOVE STRING (ex. [])`
+  - **Default**: `[]`
   - **Description**: List of columns to drop from the dataset.
 
 ## Argparse Parser Defaults
@@ -104,7 +104,7 @@ Used to provide the argparse parser default values and attributes.
 
 - `model_output_path`
   - **Type**: `str`
-  - **Default**: `ENTER MODEL OUTPUT PATH HERE (ex. "./Models/liquid_gold_model.pt")`  
+  - **Default**: `"..Models/trained_model.pt"`  
   - **Description**: Path to save the trained model. Note: Overwritten in ['Simulated Args'](#simulated-args) section during ipynb testing.
 
 ## Model
@@ -113,7 +113,7 @@ For the model architecture, such as the number of repeating model blocks.
 
 - `in_dim`  
   - **Type**: `int`  
-  - **Default**: `ENTER INPUT DIMENSION SIZE HERE (ex. 5)`  
+  - **Default**: `33`  
   - **Description**: Input dimension size.
 
 - `intermediate_dim`  
@@ -123,7 +123,7 @@ For the model architecture, such as the number of repeating model blocks.
 
 - `out_dim`  
   - **Type**: `int`  
-  - **Default**: `ENTER OUTPUT DIMENSION SIZE HERE (ex. 2)`  
+  - **Default**: `2`  
   - **Description**: Output dimension size.
 
 - `num_blocks`  
@@ -192,7 +192,7 @@ Used to provide the argparse parser default values and attributes.
 
 - `loss_function`  
   - **Type**: `str`  
-  - **Default**: `"mae"`  
+  - **Default**: `"CrossEntropyLoss"`  
   - **Description**: The loss function used for training.
 
 - `early_stopping`  
@@ -249,12 +249,12 @@ Required for ipynb testing simulating possible user input, due to the argparser 
 
 - `--save_model`  
   - **Type**: `bool`  
-  - **Default**: `false`  
+  - **Default**: `true`  
   - **Description**: Override model saving behavior.
 
 - `--model_output_path`  
   - **Type**: `str`  
-  - **Default**: `ENTER MODEL OUTPUT PATH HERE (ex. "./Models/liquid_gold_model.pt")`
+  - **Default**: `"../Models/sample_model.pt"`
   - **Description**: Override model output path.
 
 </details>
