@@ -10,9 +10,17 @@ import torch
 
 from .consts import (
     FEATURE_NAMES,
-    CATEGORY_MAPPING,
+    TRUTH_MAPPING,
+    ACTIVITY_LEVEL_MAPPING,
+    ALCOHOL_GROUP_MAPPING,
+    BMI_GROUP_MAPPING,
+    DIABETES_STAGE_MAPPING,
+    EDUCATION_LEVEL_MAPPING,
+    EMPLOYMENT_STATUS_MAPPING,
+    ETHNICITY_MAPPING,
     GENDER_MAPPING,
-    STATE_MAPPING,
+    INCOME_LEVEL_MAPPING,
+    SMOKING_STATUS_MAPPING,
     INPUT_METADATA,
     STREAMLIT_VALIDATED,
     MODEL_WEIGHTS_FULL_PATH,
@@ -122,9 +130,70 @@ def convert_inputs(**kwargs) -> list:
                 raise ValueError(f"Missing required input: {feature_name}")
 
             # --- Mapped Features REVIEW FOR EACH PROJECT ---
-            if feature_name == "category":
+
+            elif feature_name == "activity_level":
                 # Use Specified Mapping for feature
-                mapped_value = CATEGORY_MAPPING.get(value, None)
+                mapped_value = ACTIVITY_LEVEL_MAPPING.get(value, None)
+                if mapped_value is not None:
+                    if not isinstance(mapped_value, float):
+                        raise ValueError(f"{feature_name} must be a float.")
+                    features.append(mapped_value)
+                else:
+                    raise ValueError(f"{feature_name}; value={value}; no mapping.")
+
+            elif feature_name == "alcohol_group":
+                # Use Specified Mapping for feature
+                mapped_value = ALCOHOL_GROUP_MAPPING.get(value, None)
+                if mapped_value is not None:
+                    if not isinstance(mapped_value, float):
+                        raise ValueError(f"{feature_name} must be a float.")
+                    features.append(mapped_value)
+                else:
+                    raise ValueError(f"{feature_name}; value={value}; no mapping.")
+
+            elif feature_name == "bmi":
+                # Use Specified Mapping for feature
+                mapped_value = BMI_GROUP_MAPPING.get(value, None)
+                if mapped_value is not None:
+                    if not isinstance(mapped_value, float):
+                        raise ValueError(f"{feature_name} must be a float.")
+                    features.append(mapped_value)
+                else:
+                    raise ValueError(f"{feature_name}; value={value}; no mapping.")
+
+            elif feature_name == "diabetes_stage":
+                # Use Specified Mapping for feature
+                mapped_value = DIABETES_STAGE_MAPPING.get(value, None)
+                if mapped_value is not None:
+                    if not isinstance(mapped_value, float):
+                        raise ValueError(f"{feature_name} must be a float.")
+                    features.append(mapped_value)
+                else:
+                    raise ValueError(f"{feature_name}; value={value}; no mapping.")
+
+            elif feature_name == "education_level":
+                # Use Specified Mapping for feature
+                mapped_value = EDUCATION_LEVEL_MAPPING.get(value, None)
+                if mapped_value is not None:
+                    if not isinstance(mapped_value, float):
+                        raise ValueError(f"{feature_name} must be a float.")
+                    features.append(mapped_value)
+                else:
+                    raise ValueError(f"{feature_name}; value={value}; no mapping.")
+
+            elif feature_name == "employment_status":
+                # Use Specified Mapping for feature
+                mapped_value = EMPLOYMENT_STATUS_MAPPING.get(value, None)
+                if mapped_value is not None:
+                    if not isinstance(mapped_value, float):
+                        raise ValueError(f"{feature_name} must be a float.")
+                    features.append(mapped_value)
+                else:
+                    raise ValueError(f"{feature_name}; value={value}; no mapping.")
+
+            elif feature_name == "ethnicity":
+                # Use Specified Mapping for feature
+                mapped_value = ETHNICITY_MAPPING.get(value, None)
                 if mapped_value is not None:
                     if not isinstance(mapped_value, float):
                         raise ValueError(f"{feature_name} must be a float.")
@@ -142,9 +211,9 @@ def convert_inputs(**kwargs) -> list:
                 else:
                     raise ValueError(f"{feature_name}; value={value}; no mapping.")
 
-            elif feature_name == "state":
+            elif feature_name == "income_level":
                 # Use Specified Mapping for feature
-                mapped_value = STATE_MAPPING.get(value, None)
+                mapped_value = INCOME_LEVEL_MAPPING.get(value, None)
                 if mapped_value is not None:
                     if not isinstance(mapped_value, float):
                         raise ValueError(f"{feature_name} must be a float.")
@@ -152,7 +221,31 @@ def convert_inputs(**kwargs) -> list:
                 else:
                     raise ValueError(f"{feature_name}; value={value}; no mapping.")
 
-            # ... Add logic for other mapped fields here
+            elif feature_name == "smoking_status":
+                # Use Specified Mapping for feature
+                mapped_value = SMOKING_STATUS_MAPPING.get(value, None)
+                if mapped_value is not None:
+                    if not isinstance(mapped_value, float):
+                        raise ValueError(f"{feature_name} must be a float.")
+                    features.append(mapped_value)
+                else:
+                    raise ValueError(f"{feature_name}; value={value}; no mapping.")
+
+            # --- True or False Mappings ---
+            elif (
+                feature_name == "abdominal_obesity"
+                or feature_name == "cardiovascular_history"
+                or feature_name == "family_history_diabetes"
+                or feature_name == "hypertension_history"
+            ):
+                # Use Specified Mapping for feature
+                mapped_value = TRUTH_MAPPING.get(value, None)
+                if mapped_value is not None:
+                    if not isinstance(mapped_value, float):
+                        raise ValueError(f"{feature_name} must be a float.")
+                    features.append(mapped_value)
+                else:
+                    raise ValueError(f"{feature_name}; value={value}; no mapping.")
 
             # --- Streamlit-Validated Features ---
             elif feature_name in STREAMLIT_VALIDATED:

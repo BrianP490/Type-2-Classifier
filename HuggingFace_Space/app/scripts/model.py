@@ -80,7 +80,7 @@ class Agent(torch.nn.Module):
         """Get the deterministic prediction on a single observation or a batch of observations.
 
         Args:
-            features (torch.tensor): the agent's input features. Expected shape is either
+            features (torch.tensor): The agent's input features. Expected shape is either
             `(num_features,)` for a single observation
             or `(batch_size, num_features)` for a batch of observations.
 

@@ -102,7 +102,7 @@ if __name__ == "__main__":
 
             prediction_index = torch.argmax(output)
             prediction_label = (
-                "FRAUD" if prediction_index == 1 else "NOT FRAUD"
+                "DIABETES" if prediction_index == 1 else "NOT DIABETES"
             )  # Map the prediction index to a label
 
             st.write("---")  # Separator for formatting
@@ -110,7 +110,7 @@ if __name__ == "__main__":
             # --- Streamlit Output ---
             st.subheader("Classification Result:")
 
-            if prediction_label == "FRAUD":
+            if prediction_label == "DIABETES":
                 st.error(f"Prediction: {prediction_label} 🚨")  # Red for alert
             else:
                 st.success(f"Prediction: {prediction_label} ✅")
