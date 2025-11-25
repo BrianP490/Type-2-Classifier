@@ -64,6 +64,7 @@ if __name__ == "__main__":
                     max_value=meta["max_value"],
                     value=meta["value"],
                     key=key,  # Use the key from metadata
+                    step=meta["step"],
                 )
 
             elif widget_type == "slider":

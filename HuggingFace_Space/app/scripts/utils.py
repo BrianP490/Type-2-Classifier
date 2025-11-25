@@ -151,7 +151,7 @@ def convert_inputs(**kwargs) -> list:
                 else:
                     raise ValueError(f"{feature_name}; value={value}; no mapping.")
 
-            elif feature_name == "bmi":
+            elif feature_name == "bmi_group":
                 # Use Specified Mapping for feature
                 mapped_value = BMI_GROUP_MAPPING.get(value, None)
                 if mapped_value is not None:

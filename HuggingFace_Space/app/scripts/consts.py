@@ -75,16 +75,30 @@ FEATURE_NAMES = [
 
 # Create list of features that will be only validated during the streamlit user input field
 STREAMLIT_VALIDATED = [
-    "ADD",
-    "STREAMLIT",
-    "VALIDATED",
-    "NAMES",
-    "HERE",
+    "age",
+    "alcohol_consumption_per_week",
+    "bmi",
+    "cholesterol_total",
+    "diabetes_risk_score",
+    "diastolic_bp",
+    "glucose_fasting",
+    "glucose_postprandial",
+    "hba1c",
+    "hdl_cholesterol",
+    "heart_rate",
+    "insulin_level",
+    "ldl_cholesterol",
+    "physical_activity_minutes_per_week",
+    "screen_time_hours_per_day",
+    "sleep_hours_per_day",
+    "systolic_bp",
+    "triglycerides",
+    "waist_to_hip_ratio",
 ]
 
 # Mappings
 
-TRUTH_MAPPING = {"False": "0.0", "True": "1.0"}
+TRUTH_MAPPING = {"False": 0.0, "True": 1.0}
 
 ACTIVITY_LEVEL_MAPPING = {"High": 0.0, "Low": 1.0, "Moderate": 2.0}
 
@@ -111,7 +125,7 @@ EMPLOYMENT_STATUS_MAPPING = {"Employed": 0.0, "Retired": 1.0, "Student": 2.0, "U
 
 ETHNICITY_MAPPING = {"Asian": 0.0, "Black": 1.0, "Hispanic": 2.0, "Other": 3.0, "White": 4.0}
 
-GENDER_MAPPING = {"Female": "0.0", "Male": "1.0", "Other": "2.0"}
+GENDER_MAPPING = {"Female": 0.0, "Male": 1.0, "Other": 2.0}
 
 INCOME_LEVEL_MAPPING = {
     "High": 0.0,
@@ -127,14 +141,14 @@ SMOKING_STATUS_MAPPING = {"Current": 0.0, "Former": 1.0, "Never": 2.0}
 # Information for streamlit user input section; keys must match with FEATURE_NAMES list content
 INPUT_METADATA = {
     "abdominal_obesity": {
-        "title": "Are you abdominaly obese?",
+        "title": "Are you Abdominaly Obese?",
         "widget_type": "selectbox",
         "options": TRUTH_MAPPING.keys(),
     },
     "activity_level": {
         "title": "How active are you?",
         "widget_type": "radio",
-        "options": ["Light", "Moderate", "Heavy"],
+        "options": ["Low", "Moderate", "High"],
     },
     "age": {
         "title": "How old are you?",
@@ -145,7 +159,7 @@ INPUT_METADATA = {
         "step": 1.0,
     },
     "alcohol_consumption_per_week": {
-        "title": "How many alcoholic beverages do you consume per week? \nBeer: 12 oz (5% ABV) \nWine: 5 oz (12% ABV) \nLiquor: 1.5 oz (40% ABV)",
+        "title": "How many alcoholic beverages do you consume per week?  \n*Beer: 12 oz (5% ABV)*  \n*Wine: 5 oz (12% ABV)*  \n*Liquor: 1.5 oz (40% ABV)*",
         "widget_type": "slider",
         "min_value": 0.0,
         "max_value": 10.0,
@@ -153,7 +167,7 @@ INPUT_METADATA = {
         "step": 1.0,
     },
     "alcohol_group": {
-        "title": "Light (≤7 drinks/week - women, ≤14 - men), Medium (7 drinks/week - women, 14 - men) Heavy (≥ 8 drinks/week - women, ≥ 15 drinks/week - men)",
+        "title": "What category do you most fit into?  \n*Light (≤7 drinks/week - women, ≤14 - men)*,  \n*Medium (7 drinks/week - women, 14 - men)*  \n*Heavy (≥ 8 drinks/week - women, ≥ 15 drinks/week - men)*",
         "widget_type": "radio",
         "options": ["Light", "Moderate", "Heavy"],
     },
@@ -163,9 +177,10 @@ INPUT_METADATA = {
         "min_value": 15.0,
         "max_value": 39.20,
         "value": 25.0,
+        "step": 0.1,
     },
     "bmi_group": {
-        "title": "What is your BMI Category? \n<18.5 - Underweight \n18.5 - 24.9 - Normal \n25.0 - 29.9 - Overweight \n≥ 30.0 Obese",
+        "title": "What is your BMI Category?  \n*<18.5 - Underweight*  \n*18.5 - 24.9 - Normal*  \n*25.0 - 29.9 - Overweight*  \n*≥ 30.0 Obese*",
         "widget_type": "radio",
         "options": ["Underweight", "Normal", "Overweight", "Obese"],
     },
@@ -180,6 +195,7 @@ INPUT_METADATA = {
         "min_value": 20.0,
         "max_value": 98.20,
         "value": 54.0,
+        "step": 1.0,
     },
     "ldl_cholesterol": {
         "title": "What are your Low-Density Lipoprotein Cholesterol levels?",
@@ -187,6 +203,7 @@ INPUT_METADATA = {
         "min_value": 50.0,
         "max_value": 263.0,
         "value": 103.0,
+        "step": 1.0,
     },
     "triglycerides": {
         "title": "What are your Triglyceride levels?",
@@ -194,13 +211,15 @@ INPUT_METADATA = {
         "min_value": 30.0,
         "max_value": 344.0,
         "value": 121.0,
+        "step": 1.0,
     },
     "cholesterol_total": {
-        "title": "What are your Total Cholesterol levels? \nCalculated using HDL+LDL+VLDL = HDL+LDL+(Triglycerides/5)",
+        "title": "What are your Total Cholesterol levels?  \n*Calculated using > HDL+LDL+VLDL = HDL+LDL+(Triglycerides/5)*",
         "widget_type": "number_input",
         "min_value": 100.0,
         "max_value": 318.0,
         "value": 185.0,
+        "step": 1.0,
     },
     "diabetes_risk_score": {
         "title": "What is your diabetes risk score?",
@@ -208,6 +227,7 @@ INPUT_METADATA = {
         "min_value": 2.7,
         "max_value": 67.2,
         "value": 30.0,
+        "step": 0.1,
     },
     "diabetes_stage": {
         "title": "What is your diabetes stage at?",
@@ -215,11 +235,12 @@ INPUT_METADATA = {
         "options": DIABETES_STAGE_MAPPING.keys(),
     },
     "systolic_bp": {
-        "title": "What is your Systolic Blood Pressure (pressure when your heart pumps blood)?",
+        "title": "What is your Systolic Blood Pressure (Pressure when your heart pumps blood)?",
         "widget_type": "number_input",
         "min_value": 90.0,
         "max_value": 179.0,
         "value": 115.0,
+        "step": 1.0,
     },
     "diastolic_bp": {
         "title": "What is your Diastolic Blood Pressure? (Pressure when the heart relaxes between beats.)",
@@ -227,6 +248,7 @@ INPUT_METADATA = {
         "min_value": 50.0,
         "max_value": 110.0,
         "value": 75.0,
+        "step": 1.0,
     },
     "education_level": {
         "title": "What is your highest Education Level?",
@@ -264,8 +286,9 @@ INPUT_METADATA = {
         "title": "What is your Postprandial Glocose level (Blood glucose levels ~ 2 hours after a meal)?",
         "widget_type": "number_input",
         "min_value": 60.0,
-        "max_value": 172.0,
-        "value": 111.0,
+        "max_value": 287.0,
+        "value": 160.0,
+        "step": 1.0,
     },
     "hba1c": {
         "title": "What is your Hemoglobin A1c? (Percentage of Average Hemogloben, in your red blood cells, coated in glucose over 2-3 months.)",
@@ -273,6 +296,7 @@ INPUT_METADATA = {
         "min_value": 4.0,
         "max_value": 9.8,
         "value": 6.5,
+        "step": 0.01,
     },
     "heart_rate": {
         "title": "What is your Latest Heart Rate (BPM)?",
@@ -280,6 +304,7 @@ INPUT_METADATA = {
         "min_value": 40.0,
         "max_value": 105.0,
         "value": 69.0,
+        "step": 1.0,
     },
     "hypertension_history": {
         "title": "Do your have previous Hypertension issues?",
@@ -287,7 +312,11 @@ INPUT_METADATA = {
         "options": TRUTH_MAPPING.keys(),
     },
     "income_level": {
-        "title": "What is your income level \n$0 - $30,000 = Low \n$30,001 - $58,020 = Lower-Middle \n$58,021 - $94,000 = Middle \n$94,001 - $153,000 = Upper-Middle \n>$153,001 = High",
+        "title": "What is your income level?  \n\
+            *\$0 - \$30,000 = Low*  \n*\$30,001 - \$58,020 =\
+            Lower-Middle*  \n*\$58,021 - \$94,000 = Middle*\
+            \n*\$94,001 - \$153,000 = Upper-Middle*  \n\
+            *>\$153,001 = High",
         "widget_type": "radio",
         "options": ["Low", "Lower-Middle", "Middle", "Upper-Middle", "High"],
     },
@@ -297,6 +326,7 @@ INPUT_METADATA = {
         "min_value": 2.0,
         "max_value": 32.2,
         "value": 9.0,
+        "step": 0.01,
     },
     "physical_activity_minutes_per_week": {
         "title": "How many minutes do you spend performing a physical activity per week?",
@@ -304,6 +334,7 @@ INPUT_METADATA = {
         "min_value": 0.0,
         "max_value": 833.0,
         "value": 120.0,
+        "step": 1.0,
     },
     "screen_time_hours_per_day": {
         "title": "How many hours do you spend watching a screen (Phone, Table, TV, etc.)?",
@@ -311,6 +342,7 @@ INPUT_METADATA = {
         "min_value": 0.5,
         "max_value": 16.7,
         "value": 6.0,
+        "step": 0.1,
     },
     "sleep_hours_per_day": {
         "title": "How many hours of sleep do you normally get?",
@@ -318,6 +350,7 @@ INPUT_METADATA = {
         "min_value": 3.0,
         "max_value": 10.0,
         "value": 7.0,
+        "step": 0.1,
     },
     "smoking_status": {
         "title": "What is your current Smoking Status?",
@@ -330,5 +363,6 @@ INPUT_METADATA = {
         "min_value": 0.67,
         "max_value": 1.06,
         "value": 0.85,
+        "step": 0.01,
     },
 }

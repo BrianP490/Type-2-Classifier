@@ -15,6 +15,7 @@ from .consts import (
     CONFIG_PATH,
     FEATURE_SCALER_PATH,
     FEATURE_NAMES,
+    INPUT_METADATA,
     # ADD MAPPINGS HERE
 )
 
