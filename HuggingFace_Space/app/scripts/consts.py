@@ -98,7 +98,7 @@ STREAMLIT_VALIDATED = [
 
 # Mappings
 
-TRUTH_MAPPING = {"False": 0.0, "True": 1.0}
+TRUTH_MAPPING = {"False": 0.0, "True,": 1.0}
 
 ACTIVITY_LEVEL_MAPPING = {"High": 0.0, "Low": 1.0, "Moderate": 2.0}
 
@@ -142,13 +142,15 @@ SMOKING_STATUS_MAPPING = {"Current": 0.0, "Former": 1.0, "Never": 2.0}
 INPUT_METADATA = {
     "abdominal_obesity": {
         "title": "Are you Abdominaly Obese?",
-        "widget_type": "selectbox",
+        "widget_type": "radio",
         "options": TRUTH_MAPPING.keys(),
+        "horizontal": True,
     },
     "activity_level": {
         "title": "How active are you?",
         "widget_type": "radio",
         "options": ["Low", "Moderate", "High"],
+        "horizontal": True,
     },
     "age": {
         "title": "How old are you?",
@@ -170,10 +172,11 @@ INPUT_METADATA = {
         "title": "What category do you most fit into?  \n*Light (≤7 drinks/week - women, ≤14 - men)*,  \n*Medium (7 drinks/week - women, 14 - men)*  \n*Heavy (≥ 8 drinks/week - women, ≥ 15 drinks/week - men)*",
         "widget_type": "radio",
         "options": ["Light", "Moderate", "Heavy"],
+        "horizontal": True,
     },
     "bmi": {
         "title": "What is your Body Mass Index?",
-        "widget_type": "number_input",
+        "widget_type": "slider",
         "min_value": 15.0,
         "max_value": 39.20,
         "value": 25.0,
@@ -183,15 +186,18 @@ INPUT_METADATA = {
         "title": "What is your BMI Category?  \n*<18.5 - Underweight*  \n*18.5 - 24.9 - Normal*  \n*25.0 - 29.9 - Overweight*  \n*≥ 30.0 Obese*",
         "widget_type": "radio",
         "options": ["Underweight", "Normal", "Overweight", "Obese"],
+        "horizontal": True,
+        "preselected_index": 2,
     },
     "cardiovascular_history": {
         "title": "Do your have previous cardiovascular issues?",
-        "widget_type": "selectbox",
+        "widget_type": "radio",
         "options": TRUTH_MAPPING.keys(),
+        "horizontal": True,
     },
     "hdl_cholesterol": {
         "title": "What are your High-Density Lipoprotein Cholesterol levels?",
-        "widget_type": "number_input",
+        "widget_type": "slider",
         "min_value": 20.0,
         "max_value": 98.20,
         "value": 54.0,
@@ -199,7 +205,7 @@ INPUT_METADATA = {
     },
     "ldl_cholesterol": {
         "title": "What are your Low-Density Lipoprotein Cholesterol levels?",
-        "widget_type": "number_input",
+        "widget_type": "slider",
         "min_value": 50.0,
         "max_value": 263.0,
         "value": 103.0,
@@ -207,7 +213,7 @@ INPUT_METADATA = {
     },
     "triglycerides": {
         "title": "What are your Triglyceride levels?",
-        "widget_type": "number_input",
+        "widget_type": "slider",
         "min_value": 30.0,
         "max_value": 344.0,
         "value": 121.0,
@@ -215,7 +221,7 @@ INPUT_METADATA = {
     },
     "cholesterol_total": {
         "title": "What are your Total Cholesterol levels?  \n*Calculated using > HDL+LDL+VLDL = HDL+LDL+(Triglycerides/5)*",
-        "widget_type": "number_input",
+        "widget_type": "slider",
         "min_value": 100.0,
         "max_value": 318.0,
         "value": 185.0,
@@ -223,7 +229,7 @@ INPUT_METADATA = {
     },
     "diabetes_risk_score": {
         "title": "What is your diabetes risk score?",
-        "widget_type": "number_input",
+        "widget_type": "slider",
         "min_value": 2.7,
         "max_value": 67.2,
         "value": 30.0,
@@ -231,12 +237,14 @@ INPUT_METADATA = {
     },
     "diabetes_stage": {
         "title": "What is your diabetes stage at?",
-        "widget_type": "selectbox",
+        "widget_type": "radio",
         "options": DIABETES_STAGE_MAPPING.keys(),
+        "horizontal": True,
+        "preselected_index": 1,
     },
     "systolic_bp": {
         "title": "What is your Systolic Blood Pressure (Pressure when your heart pumps blood)?",
-        "widget_type": "number_input",
+        "widget_type": "slider",
         "min_value": 90.0,
         "max_value": 179.0,
         "value": 115.0,
@@ -244,7 +252,7 @@ INPUT_METADATA = {
     },
     "diastolic_bp": {
         "title": "What is your Diastolic Blood Pressure? (Pressure when the heart relaxes between beats.)",
-        "widget_type": "number_input",
+        "widget_type": "slider",
         "min_value": 50.0,
         "max_value": 110.0,
         "value": 75.0,
@@ -252,39 +260,48 @@ INPUT_METADATA = {
     },
     "education_level": {
         "title": "What is your highest Education Level?",
-        "widget_type": "selectbox",
+        "widget_type": "radio",
         "options": ["No formal", "Highschool", "Graduate", "Postgraduate"],
+        "horizontal": True,
+        "preselected_index": 2,
     },
     "employment_status": {
         "title": "What is your current Employment Status?",
-        "widget_type": "selectbox",
+        "widget_type": "radio",
         "options": ["Student", "Employed", "Retired", "Unemployed"],
+        "horizontal": True,
+        "preselected_index": 1,
     },
     "ethnicity": {
         "title": "What is your Ethnicity?",
-        "widget_type": "selectbox",
+        "widget_type": "radio",
         "options": ETHNICITY_MAPPING.keys(),
+        "horizontal": True,
+        "preselected_index": 4,
     },
     "family_history_diabetes": {
         "title": "Does your family have History of Diabetes?",
-        "widget_type": "selectbox",
+        "widget_type": "radio",
         "options": TRUTH_MAPPING.keys(),
+        "horizontal": True,
     },
     "gender": {
         "title": "What is your Gender?",
-        "widget_type": "selectbox",
+        "widget_type": "radio",
         "options": GENDER_MAPPING.keys(),
+        "horizontal": True,
     },
     "glucose_fasting": {
         "title": "What is your Blood Glucose levels when fasting?",
-        "widget_type": "number_input",
+        "widget_type": "slider",
         "min_value": 60.0,
         "max_value": 172.0,
         "value": 111.0,
+        "step": 1.0,
     },
     "glucose_postprandial": {
         "title": "What is your Postprandial Glocose level (Blood glucose levels ~ 2 hours after a meal)?",
-        "widget_type": "number_input",
+        "widget_type": "slider",
         "min_value": 60.0,
         "max_value": 287.0,
         "value": 160.0,
@@ -292,7 +309,7 @@ INPUT_METADATA = {
     },
     "hba1c": {
         "title": "What is your Hemoglobin A1c? (Percentage of Average Hemogloben, in your red blood cells, coated in glucose over 2-3 months.)",
-        "widget_type": "number_input",
+        "widget_type": "slider",
         "min_value": 4.0,
         "max_value": 9.8,
         "value": 6.5,
@@ -300,7 +317,7 @@ INPUT_METADATA = {
     },
     "heart_rate": {
         "title": "What is your Latest Heart Rate (BPM)?",
-        "widget_type": "number_input",
+        "widget_type": "slider",
         "min_value": 40.0,
         "max_value": 105.0,
         "value": 69.0,
@@ -308,8 +325,9 @@ INPUT_METADATA = {
     },
     "hypertension_history": {
         "title": "Do your have previous Hypertension issues?",
-        "widget_type": "selectbox",
+        "widget_type": "radio",
         "options": TRUTH_MAPPING.keys(),
+        "horizontal": True,
     },
     "income_level": {
         "title": "What is your income level?  \n\
@@ -319,10 +337,12 @@ INPUT_METADATA = {
             *>\$153,001 = High",
         "widget_type": "radio",
         "options": ["Low", "Lower-Middle", "Middle", "Upper-Middle", "High"],
+        "horizontal": True,
+        "preselected_index": 2,
     },
     "insulin_level": {
         "title": "What is your latest Insulin Level after fasting 8-12hrs?",
-        "widget_type": "number_input",
+        "widget_type": "slider",
         "min_value": 2.0,
         "max_value": 32.2,
         "value": 9.0,
@@ -330,7 +350,7 @@ INPUT_METADATA = {
     },
     "physical_activity_minutes_per_week": {
         "title": "How many minutes do you spend performing a physical activity per week?",
-        "widget_type": "number_input",
+        "widget_type": "slider",
         "min_value": 0.0,
         "max_value": 833.0,
         "value": 120.0,
@@ -338,7 +358,7 @@ INPUT_METADATA = {
     },
     "screen_time_hours_per_day": {
         "title": "How many hours do you spend watching a screen (Phone, Table, TV, etc.)?",
-        "widget_type": "number_input",
+        "widget_type": "slider",
         "min_value": 0.5,
         "max_value": 16.7,
         "value": 6.0,
@@ -346,7 +366,7 @@ INPUT_METADATA = {
     },
     "sleep_hours_per_day": {
         "title": "How many hours of sleep do you normally get?",
-        "widget_type": "number_input",
+        "widget_type": "slider",
         "min_value": 3.0,
         "max_value": 10.0,
         "value": 7.0,
@@ -354,12 +374,14 @@ INPUT_METADATA = {
     },
     "smoking_status": {
         "title": "What is your current Smoking Status?",
-        "widget_type": "selectbox",
+        "widget_type": "radio",
         "options": SMOKING_STATUS_MAPPING.keys(),
+        "horizontal": True,
+        "preselected_index": 2,
     },
     "waist_to_hip_ratio": {
         "title": "What is your Waist to Hip Ratio?",
-        "widget_type": "number_input",
+        "widget_type": "slider",
         "min_value": 0.67,
         "max_value": 1.06,
         "value": 0.85,
