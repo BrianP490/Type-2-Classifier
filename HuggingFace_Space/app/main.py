@@ -26,7 +26,7 @@ if __name__ == "__main__":
 
     st.title("Agent")
 
-    st.subheader("WRITE PURPOSE FOR THIS APP", divider=True)
+    st.subheader("HELPS DIAGNOSE DIABETES", divider=True)
 
     # Load Scalers
     feature_scaler = load_feature_scaler(logger)
@@ -112,7 +112,7 @@ if __name__ == "__main__":
 
             prediction_index = torch.argmax(output)
             prediction_label = (
-                "DIABETES" if prediction_index == 1 else "NOT DIABETES"
+                "DIABETES" if prediction_index == 1 else "NO DIABETES"
             )  # Map the prediction index to a label
 
             st.write("---")  # Separator for formatting
