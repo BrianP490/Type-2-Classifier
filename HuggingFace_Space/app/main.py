@@ -26,7 +26,7 @@ if __name__ == "__main__":
 
     st.title("Agent")
 
-    st.subheader("WRITE PURPOSE FOR THIS APP", divider=True)
+    st.subheader("HELPS DIAGNOSE DIABETES", divider=True)
 
     # Load Scalers
     feature_scaler = load_feature_scaler(logger)
@@ -55,7 +55,12 @@ if __name__ == "__main__":
                 user_inputs[key] = st.selectbox(title, meta["options"])
 
             elif widget_type == "radio":
-                user_inputs[key] = st.radio(title, meta["options"])
+                user_inputs[key] = st.radio(
+                    title,
+                    options=meta["options"],
+                    horizontal=meta.get("horizontal", None),
+                    index=meta.get("preselected_index", 0),
+                )
 
             elif widget_type == "number_input":
                 user_inputs[key] = st.number_input(
@@ -64,11 +69,16 @@ if __name__ == "__main__":
                     max_value=meta["max_value"],
                     value=meta["value"],
                     key=key,  # Use the key from metadata
+                    step=meta.get("step", None),
                 )
 
             elif widget_type == "slider":
                 user_inputs[key] = st.slider(
-                    title, meta["min_value"], meta["max_value"], meta["value"], step=meta["step"]
+                    title,
+                    meta["min_value"],
+                    meta["max_value"],
+                    meta["value"],
+                    step=meta.get("step", None),
                 )
 
             # ----------------------------------------------------
@@ -102,7 +112,7 @@ if __name__ == "__main__":
 
             prediction_index = torch.argmax(output)
             prediction_label = (
-                "FRAUD" if prediction_index == 1 else "NOT FRAUD"
+                "DIABETES" if prediction_index == 1 else "NO DIABETES"
             )  # Map the prediction index to a label
 
             st.write("---")  # Separator for formatting
@@ -110,7 +120,7 @@ if __name__ == "__main__":
             # --- Streamlit Output ---
             st.subheader("Classification Result:")
 
-            if prediction_label == "FRAUD":
+            if prediction_label == "DIABETES":
                 st.error(f"Prediction: {prediction_label} 🚨")  # Red for alert
             else:
                 st.success(f"Prediction: {prediction_label} ✅")

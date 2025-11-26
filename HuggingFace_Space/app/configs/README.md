@@ -8,7 +8,7 @@ For the model architecture, such as the number of repeating model blocks.
 
 - `in_dim`  
   - **Type**: `int`  
-  - **Default**: `ENTER INPUT DIMENSION SIZE HERE (ex. 5)`  
+  - **Default**: `33`  
   - **Description**: Input dimension size.
 
 - `intermediate_dim`  
@@ -18,7 +18,7 @@ For the model architecture, such as the number of repeating model blocks.
 
 - `out_dim`  
   - **Type**: `int`  
-  - **Default**: `ENTER OUTPUT DIMENSION SIZE HERE (ex. 2)`  
+  - **Default**: `2`  
   - **Description**: Output dimension size.
 
 - `num_blocks`  
@@ -42,32 +42,32 @@ Used to configure the error/info logging behaviors.
 
 - `log_file`  
   - **Type**: `str`  
-  - **Default**: `logs/app.log`  
+  - **Default**: `"logs/app.log"`  
   - **Description**: Path to the log file.
 
 - `logger_name`  
   - **Type**: `str`  
-  - **Default**: `main`  
+  - **Default**: `"main"`  
   - **Description**: Name of the logger instance.
 
 - `log_level`  
   - **Type**: `str`  
-  - **Default**: `INFO`  
+  - **Default**: `"INFO"`  
   - **Description**: Logging level (e.g., INFO, DEBUG).
 
 - `log_mode`  
   - **Type**: `str`  
-  - **Default**: `a`  
+  - **Default**: `"a"`  
   - **Description**: File mode for logging (e.g., 'w' for overwrite, 'a' for appending).
 
 - `log_format`  
   - **Type**: `str`  
-  - **Default**: `%(asctime)s - %(name)s - %(levelname)s - %(message)s`  
+  - **Default**: `"%(asctime)s - %(name)s - %(levelname)s - %(message)s"`  
   - **Description**: Format of the logging method in the logger.
 
 - `date_format`  
   - **Type**: `str`  
-  - **Default**: `%Y-%m-%d %H:%M:%S`  
+  - **Default**: `"%Y-%m-%d %H:%M:%S"`  
   - **Description**: Date and Time format of the log messages.
 
 - `log_to_console`  

@@ -21,7 +21,7 @@ RUN pip install --upgrade pip setuptools
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy your entire application code, including the model weights, into the container.
-# This assumes your model is at ./app/model_weights/model_policy.pth relative to the project root.
+# This assumes your model is at ./app/model_weights/model_weights.pt relative to the project root.
 COPY . /app
 
 # Expose the port that Streamlit runs on.

@@ -1,8 +1,8 @@
 {
   "model": {
-    "in_dim": "CHANGE TO NUMBER OF INPUT FEATURES (ex. 5)",
+    "in_dim": 33,
     "intermediate_dim": 128,
-    "out_dim": "CHANGE TO NUMBER OF OUTPUT FEATURES (ex. 2)",
+    "out_dim": 2,
     "num_blocks": 12,
     "dropout_rate": 0.1
   },

@@ -2,15 +2,15 @@
 
 ## 📌 Problem Statement
 
-Fill in content here
+Diabetes is a major health problem around the world. America single-handedly has over 53 million people affected by both Type-1 and Type-2 Diabetes. Identifying that someone has diabetes is the first step to prevent any health complications and maintain a healthy lifestyle. 
 
 ## 🔎 Scope
 
-Fill in content here
+The scope of this project is to create a classifying agent that is improves the accuracy of diagnosing a patient with diabetes. This project also serves as a reminder to work alongside doctors and health specialists in order to prevent the development of diabetes.
 
 ## 📖 Project Purpose
 
-Fill in content here
+The purpose of this project is to find a dataset that is capable of analysis and to use that dataset to train a classification agent that correctly categorizes a patient into either having or not having diabetes. The agent model and trained weights can also be used to create an easy to use application. 
 
 ## 💻 Installation Instructions:
 
@@ -42,7 +42,7 @@ However, these are the most important command-line arguments that affect the beh
 
     - Type: int
 
-    - Default: `8`
+    - Default: `1`
 
     - Description: Number of training epochs to run.
 

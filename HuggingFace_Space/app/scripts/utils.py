@@ -10,9 +10,17 @@ import torch
 
 from .consts import (
     FEATURE_NAMES,
-    CATEGORY_MAPPING,
+    TRUTH_MAPPING,
+    ACTIVITY_LEVEL_MAPPING,
+    ALCOHOL_GROUP_MAPPING,
+    BMI_GROUP_MAPPING,
+    DIABETES_STAGE_MAPPING,
+    EDUCATION_LEVEL_MAPPING,
+    EMPLOYMENT_STATUS_MAPPING,
+    ETHNICITY_MAPPING,
     GENDER_MAPPING,
-    STATE_MAPPING,
+    INCOME_LEVEL_MAPPING,
+    SMOKING_STATUS_MAPPING,
     INPUT_METADATA,
     STREAMLIT_VALIDATED,
     MODEL_WEIGHTS_FULL_PATH,
@@ -28,6 +36,7 @@ def setup_logger(config: dict, propogate: bool = False) -> Logger:
     Args:
         config (dict): Dictionary containing logging configuration.
         propogate (bool): Whether to allow log messages to propagate to ancestor loggers.
+
     Returns:
         Logger: Configured logger instance.
     """
@@ -102,8 +111,10 @@ def setup_logger(config: dict, propogate: bool = False) -> Logger:
 
 def convert_inputs(**kwargs) -> list:
     """Convert user inputs into a list of features for the model.
+
     Args:
         **kwargs: Dictionary of user inputs (e.g., {'category': 'entertainment', 'amt': 25.0, ...})
+
     Returns:
         features: A list of converted features ready for model input.
     """
@@ -118,10 +129,71 @@ def convert_inputs(**kwargs) -> list:
             if value is None:
                 raise ValueError(f"Missing required input: {feature_name}")
 
-            # --- Mapped Features ---
-            if feature_name == "category":
+            # --- Mapped Features REVIEW FOR EACH PROJECT ---
+
+            elif feature_name == "activity_level":
                 # Use Specified Mapping for feature
-                mapped_value = CATEGORY_MAPPING.get(value, None)
+                mapped_value = ACTIVITY_LEVEL_MAPPING.get(value, None)
+                if mapped_value is not None:
+                    if not isinstance(mapped_value, float):
+                        raise ValueError(f"{feature_name} must be a float.")
+                    features.append(mapped_value)
+                else:
+                    raise ValueError(f"{feature_name}; value={value}; no mapping.")
+
+            elif feature_name == "alcohol_group":
+                # Use Specified Mapping for feature
+                mapped_value = ALCOHOL_GROUP_MAPPING.get(value, None)
+                if mapped_value is not None:
+                    if not isinstance(mapped_value, float):
+                        raise ValueError(f"{feature_name} must be a float.")
+                    features.append(mapped_value)
+                else:
+                    raise ValueError(f"{feature_name}; value={value}; no mapping.")
+
+            elif feature_name == "bmi_group":
+                # Use Specified Mapping for feature
+                mapped_value = BMI_GROUP_MAPPING.get(value, None)
+                if mapped_value is not None:
+                    if not isinstance(mapped_value, float):
+                        raise ValueError(f"{feature_name} must be a float.")
+                    features.append(mapped_value)
+                else:
+                    raise ValueError(f"{feature_name}; value={value}; no mapping.")
+
+            elif feature_name == "diabetes_stage":
+                # Use Specified Mapping for feature
+                mapped_value = DIABETES_STAGE_MAPPING.get(value, None)
+                if mapped_value is not None:
+                    if not isinstance(mapped_value, float):
+                        raise ValueError(f"{feature_name} must be a float.")
+                    features.append(mapped_value)
+                else:
+                    raise ValueError(f"{feature_name}; value={value}; no mapping.")
+
+            elif feature_name == "education_level":
+                # Use Specified Mapping for feature
+                mapped_value = EDUCATION_LEVEL_MAPPING.get(value, None)
+                if mapped_value is not None:
+                    if not isinstance(mapped_value, float):
+                        raise ValueError(f"{feature_name} must be a float.")
+                    features.append(mapped_value)
+                else:
+                    raise ValueError(f"{feature_name}; value={value}; no mapping.")
+
+            elif feature_name == "employment_status":
+                # Use Specified Mapping for feature
+                mapped_value = EMPLOYMENT_STATUS_MAPPING.get(value, None)
+                if mapped_value is not None:
+                    if not isinstance(mapped_value, float):
+                        raise ValueError(f"{feature_name} must be a float.")
+                    features.append(mapped_value)
+                else:
+                    raise ValueError(f"{feature_name}; value={value}; no mapping.")
+
+            elif feature_name == "ethnicity":
+                # Use Specified Mapping for feature
+                mapped_value = ETHNICITY_MAPPING.get(value, None)
                 if mapped_value is not None:
                     if not isinstance(mapped_value, float):
                         raise ValueError(f"{feature_name} must be a float.")
@@ -139,9 +211,9 @@ def convert_inputs(**kwargs) -> list:
                 else:
                     raise ValueError(f"{feature_name}; value={value}; no mapping.")
 
-            elif feature_name == "state":
+            elif feature_name == "income_level":
                 # Use Specified Mapping for feature
-                mapped_value = STATE_MAPPING.get(value, None)
+                mapped_value = INCOME_LEVEL_MAPPING.get(value, None)
                 if mapped_value is not None:
                     if not isinstance(mapped_value, float):
                         raise ValueError(f"{feature_name} must be a float.")
@@ -149,7 +221,31 @@ def convert_inputs(**kwargs) -> list:
                 else:
                     raise ValueError(f"{feature_name}; value={value}; no mapping.")
 
-            # ... Add logic for other mapped fields here
+            elif feature_name == "smoking_status":
+                # Use Specified Mapping for feature
+                mapped_value = SMOKING_STATUS_MAPPING.get(value, None)
+                if mapped_value is not None:
+                    if not isinstance(mapped_value, float):
+                        raise ValueError(f"{feature_name} must be a float.")
+                    features.append(mapped_value)
+                else:
+                    raise ValueError(f"{feature_name}; value={value}; no mapping.")
+
+            # --- True or False Mappings ---
+            elif (
+                feature_name == "abdominal_obesity"
+                or feature_name == "cardiovascular_history"
+                or feature_name == "family_history_diabetes"
+                or feature_name == "hypertension_history"
+            ):
+                # Use Specified Mapping for feature
+                mapped_value = TRUTH_MAPPING.get(value, None)
+                if mapped_value is not None:
+                    if not isinstance(mapped_value, float):
+                        raise ValueError(f"{feature_name} must be a float.")
+                    features.append(mapped_value)
+                else:
+                    raise ValueError(f"{feature_name}; value={value}; no mapping.")
 
             # --- Streamlit-Validated Features ---
             elif feature_name in STREAMLIT_VALIDATED:
@@ -181,8 +277,10 @@ def convert_inputs(**kwargs) -> list:
 @st.cache_data
 def load_config():
     """Loads configuration file using global variable. Optimized using streamlit caching.
+
     Args:
         N/A
+
     Returns:
         config (dict): the python dictionary containing configuration data
     """
@@ -214,8 +312,10 @@ def load_config():
 @st.cache_resource
 def load_model(_logger: Logger):
     """Helper function that loads the model's architecture and instantiates a model with its trained weights. Optimized using streamlit caching.
+
     Args:
         _logger (Logger): The logger instance to log messages. Use underscore to prevent hashing by Streamlit.
+
     Returns:
         Agent (torch.nn.Module): Returns agent to cpu in evaluation mode.
     """
@@ -253,8 +353,10 @@ def load_model(_logger: Logger):
 @st.cache_data
 def load_feature_scaler(_logger: Logger):
     """Loads the feature scaler using the global variable. Optimized using streamlit caching.
+
     Args:
         _logger (Logger): The logger instance to log messages. Use underscore to prevent hashing by Streamlit.
+
     Returns:
         feature_scaler: the loaded scalert object
     """
@@ -279,8 +381,10 @@ def load_feature_scaler(_logger: Logger):
 @st.cache_data
 def load_label_scaler(_logger: Logger):
     """Loads the label scaler using the global variable. Optimized using streamlit caching.
+
     Args:
         _logger (Logger): The logger instance to log messages. Use underscore to prevent hashing by Streamlit.
+
     Returns:
         label_scaler: the loaded scalert object
     """
@@ -292,8 +396,10 @@ def load_label_scaler(_logger: Logger):
 
 def log_and_stop(message: str):
     """Helper function to log relevant messages. Handles message and exits the program.
+
     Args:
         message (str): The message to log and display
+
     Returns:
         N/A
     """
