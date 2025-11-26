@@ -32,6 +32,8 @@ Update the *Training Script Guide*
 ## **Step 6**:
 Update the *Dataset Information*
 
+- Replace the "INSERT URL HERE" with the public URL of the dataset
+
 ## **Step 7**:
 Update the *Folder Directory*
 
