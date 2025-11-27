@@ -10,7 +10,7 @@
   }
   ,
   "parser_defaults": {
-    "epochs": 8,
+    "epochs": 1,
     "learning_rate": 0.0003,
     "max_grad_norm": 3.0,
     "dataloader_batch_size": 64,
@@ -21,7 +21,7 @@
     "use_cuda": false,
     "device": "cpu",
     "save_model": false,
-    "model_output_path": "..Models/trained_model.pt"
+    "model_output_path": "./models/trained_model.pt"
   },
   "model": {
     "in_dim": 33,

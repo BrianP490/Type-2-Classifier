@@ -1,4 +1,4 @@
-# Template README.md
+# Diabetes Classifier 
 
 ## 📌 Problem Statement
 
@@ -19,7 +19,7 @@ The purpose of this project is to find a dataset that is capable of analysis and
 2. Clone the repository
 
     ```bash
-    git clone INSERT-GITHUB-URL-HERE
+    git clone https://github.com/CongaJAMM/Type-2-Classifier.git
     ```
 
     ```bash
@@ -90,7 +90,7 @@ However, these are the most important command-line arguments that affect the beh
 
     - Type: int
 
-    - Default: `2`
+    - Default: `32`
 
     - Description: Frequency (in iterations) to log training progress.
 
@@ -98,7 +98,7 @@ However, these are the most important command-line arguments that affect the beh
 
     - Type: int
 
-    - Default: `2`
+    - Default: `32`
 
     - Description: Frequency (in iterations) to evaluate the model.
 
@@ -150,7 +150,7 @@ However, these are the most important command-line arguments that affect the beh
 
 ## 🗠 Dataset Information
 
- - All dataset information located in [HuggingFace Dataset](INSERT URL HERE)
+ - All dataset information located in [HuggingFace Dataset](hf://datasets/MaxPrestige/Synthetic-Diabetes-Dataset/Data/Synthetic-Diabetes-Dataset.csv)
 
 ## 📂 Folder Directory
 

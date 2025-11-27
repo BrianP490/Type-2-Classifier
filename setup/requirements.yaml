@@ -8,7 +8,6 @@ name: type2_env
 channels:
   - pytorch
   - nvidia
-  - conda-forge
   - defaults
 dependencies:
   - _python_abi3_support=1.0

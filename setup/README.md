@@ -1,11 +1,11 @@
 # Environments used:
 
-1. `ENTER VIRTUAL ENV HERE`
+1. `CC_env`
     - Requirements file: **requirements.yaml**
     - Used during Model Development and Training.
 
-2. `EXTRA VIRTUAL ENVS CONTINUED`
-    - Requirements file: **other-envs.yaml**
+2. `strl_env`
+    - Requirements file: **streamlit_dev.yaml**
     - Used during Streamlit Application Development
 
 # Environment Creation:
